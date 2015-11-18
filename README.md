@@ -4,9 +4,9 @@ Some clojure code for putting all your tweets into a Postgres database.
 
 ## Requirements
 
-- Lein
-- PostgreSQL
-- Your twitter data as CSV
+- [lein](http://leiningen.org/)
+- [PostgreSQL](http://www.postgresql.org/)
+- [Your twitter data as CSV](https://support.twitter.com/articles/20170160?lang=en)
 
 ## Setup
 
