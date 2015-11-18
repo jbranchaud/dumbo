@@ -2,9 +2,10 @@
   (:require [clojure.java.jdbc :as sql]))
 
 (def spec "postgresql://localhost:5432/dumbo")
+(def table-names ["standard_tweets" "gin_tweets"])
 
 (defn parse-int [s]
-    (Integer/parseInt (re-find #"\A-?\d+" s)))
+  (Integer/parseInt (re-find #"\A-?\d+" s)))
 
 (defn table-exists?
   [table-name]
@@ -38,7 +39,7 @@
 
 (defn insert-tweet
   [tweet]
-  (doseq [table-name ["standard_tweets" "gin_tweets"]]
+  (doseq [table-name table-names]
     (sql/execute! spec [(str "insert into " table-name " (tweet_id, tweeted_at, content, retweet, reply) values (?::bigint,?::timestamptz,?,?,?);")
                         (get tweet 0)
                         (get tweet 3)
